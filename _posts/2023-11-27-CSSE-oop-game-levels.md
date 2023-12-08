@@ -18,6 +18,7 @@ permalink: /mariogame
 <!-- Prepare DOM elements -->
 <!-- Wrap both the canvas and controls in a container div -->
 <div id="canvasContainer">
+    <div id="score"></div>
     <div id="gameBegin" hidden>
         <button id="startGame">Start Game</button>
     </div>
@@ -52,9 +53,11 @@ permalink: /mariogame
         grass: { src: "/images/platformer/platforms/grass.png" },
         alien: { src: "/images/platformer/platforms/alien.png" }
       },
+      thing: {
+        coin: { src: "/images/Coin.png" }
+      },  
       platformO: {
         grass: { src: "/images/brick_wall.png" },
-        alien: { src: "/images/platformer/platforms/alien.png" }
       },
       backgrounds: {
         start: { src: "/images/platformer/backgrounds/home.png" },
@@ -87,6 +90,13 @@ permalink: /mariogame
           d: { row: 0, frames: 15, idleFrame: { column: 7, frames: 0 } }
         }
       }
+      enemies: {
+    goomba: {
+      src: "/images/platformer/sprites/goomba.png",
+      width: 448,
+      height: 452,
+    }
+  }
     };
 
     // add File to assets, ensure valid site.baseurl
@@ -169,7 +179,7 @@ permalink: /mariogame
     new GameLevel( {tag: "start", callback: startGameCallback } );
     new GameLevel( {tag: "home", background: assets.backgrounds.start, callback: homeScreenCallback } );
     // Game screens
-    new GameLevel( {tag: "hills", background: assets.backgrounds.hills, platform: assets.platforms.grass, platformO: assets.platformO.grass, player: assets.players.mario, tube: assets.obstacles.tube, callback: testerCallBack } );
+    new GameLevel( {tag: "hills", background: assets.backgrounds.hills, platform: assets.platforms.grass, platformO: assets.platformO.grass, player: assets.players.mario, tube: assets.obstacles.tube, callback: testerCallBack, thing: assets.thing.coin, } );
     new GameLevel( {tag: "alien", background: assets.backgrounds.planet, platform: assets.platforms.alien, player: assets.players.monkey, callback: testerCallBack } );
     // Game Over screen
     new GameLevel( {tag: "end", background: assets.backgrounds.end, callback: gameOverCallBack } );
