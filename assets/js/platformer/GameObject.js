@@ -20,7 +20,7 @@ class GameObject {
         this.collisionData = {};
         this.jsonifiedElement = '';
         // Add this object to the game object array so collision can be detected
-        // among other things
+        // among other fdafda
         GameEnv.gameObjects.push(this); 
     }
 
@@ -163,6 +163,15 @@ class GameObject {
                     right: thisCenterX < otherCenterX,
                 },
                 other: {
+                    id: other.canvas.id,
+                    top: thisCenterY > otherCenterY,
+                    bottom: thisCenterY < otherCenterY,
+                    left: thisCenterX < otherCenterX,
+                    right: thisCenterX > otherCenterX,
+                    ontop: Math.abs(thisBottom - otherRect.top) <= GameEnv.gravity,
+                    x: otherRect.left
+                },
+                coin: {
                     id: other.canvas.id,
                     top: thisCenterY > otherCenterY,
                     bottom: thisCenterY < otherCenterY,
