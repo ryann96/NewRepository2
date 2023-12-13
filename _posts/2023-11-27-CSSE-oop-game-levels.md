@@ -9,10 +9,34 @@ permalink: /mariogame
 ---
 
 <style>
-    #gameBegin, #controls, #gameOver {
-        position: relative;
-        z-index: 2; /*Ensure the controls are on top*/
+  #gameBegin, #controls, #gameOver {
+    position: relative;
+    z-index: 2; /*Ensure the controls are on top*/
+  }
+  
+  #toggleCanvasEffect, #background, #platform {
+    animation: fadein 5s;
+  }
+
+  #startGame {
+    animation: flash 0.5s infinite;
+  }
+
+  @keyframes flash {
+    50% {
+      opacity: 0;
     }
+  }
+
+  @keyframes fadeout {
+    from {opacity: 1}
+    to {opacity: 0}
+  }
+
+  @keyframes fadein {
+    from {opacity: 0}
+    to {opacity: 1}
+  }
 </style>
 
 <!-- Prepare DOM elements -->
@@ -45,59 +69,60 @@ permalink: /mariogame
     */
 
     // Define assets for the game
-    var assets = {
-      obstacles: {
-        tube: { src: "/images/platformer/obstacles/tube.png" },
-      },
-      platforms: {
-        grass: { src: "/images/platformer/platforms/grass.png" },
-        alien: { src: "/images/platformer/platforms/alien.png" }
-      },
-      thing: {
-        coin: { src: "/images/Coin.png" }
-      },  
-      platformO: {
-        grass: { src: "/images/brick_wall.png" },
-      },
-      backgrounds: {
-        start: { src: "/images/platformer/backgrounds/home.png" },
-        hills: { src: "/images/platformer/backgrounds/hills.png" },
-        planet: { src: "/images/platformer/backgrounds/planet.jpg" },
-        castles: { src: "/images/platformer/backgrounds/castles.png" },
-        end: { src: "/images/platformer/backgrounds/game_over.png" }
-      },
-      players: {
-        mario: {
-          src: "/images/platformer/sprites/mario.png",
-          width: 256,
-          height: 256,
-          w: { row: 10, frames: 15 },
-          wa: { row: 11, frames: 15 },
-          wd: { row: 10, frames: 15 },
-          a: { row: 3, frames: 7, idleFrame: { column: 7, frames: 0 } },
-          s: {  },
-          d: { row: 2, frames: 7, idleFrame: { column: 7, frames: 0 } }
-        },
-        monkey: {
-          src: "/images/platformer/sprites/monkey.png",
-          width: 40,
-          height: 40,
-          w: { row: 9, frames: 15 },
-          wa: { row: 9, frames: 15 },
-          wd: { row: 9, frames: 15 },
-          a: { row: 1, frames: 15, idleFrame: { column: 7, frames: 0 } },
-          s: { row: 12, frames: 15 },
-          d: { row: 0, frames: 15, idleFrame: { column: 7, frames: 0 } }
-        }
-      }
-      enemies: {
+  var assets = {
+  obstacles: {
+    tube: { src: "/images/platformer/obstacles/tube.png" },
+  },
+  platforms: {
+    grass: { src: "/images/platformer/platforms/grass.png" },
+    alien: { src: "/images/platformer/platforms/alien.png" }
+  },
+  thing: {
+    coin: { src: "/images/Coin.png" }
+  },  
+  platformO: {
+    grass: { src: "/images/brick_wall.png" },
+  },
+  backgrounds: {
+    start: { src: "/images/platformer/backgrounds/home.png" },
+    hills: { src: "/images/platformer/backgrounds/hills.png" },
+    mountains: { src: "/images/platformer/backgrounds/mountains.jpg"},
+    planet: { src: "/images/platformer/backgrounds/planet.jpg" },
+    castles: { src: "/images/platformer/backgrounds/castles.png" },
+    end: { src: "/images/platformer/backgrounds/game_over.png" }
+  },
+  players: {
+    mario: {
+      src: "/images/platformer/sprites/mario.png",
+      width: 256,
+      height: 256,
+      w: { row: 10, frames: 15 },
+      wa: { row: 11, frames: 15 },
+      wd: { row: 10, frames: 15 },
+      a: { row: 3, frames: 7, idleFrame: { column: 7, frames: 0 } },
+      s: {  },
+      d: { row: 2, frames: 7, idleFrame: { column: 7, frames: 0 } }
+    },
+    monkey: {
+      src: "/images/platformer/sprites/monkey.png",
+      width: 40,
+      height: 40,
+      w: { row: 9, frames: 15 },
+      wa: { row: 9, frames: 15 },
+      wd: { row: 9, frames: 15 },
+      a: { row: 1, frames: 15, idleFrame: { column: 7, frames: 0 } },
+      s: { row: 12, frames: 15 },
+      d: { row: 0, frames: 15, idleFrame: { column: 7, frames: 0 } }
+    }
+  },
+  enemies: {
     goomba: {
       src: "/images/platformer/sprites/goomba.png",
       width: 448,
       height: 452,
     }
   }
-    };
+};
 
     // add File to assets, ensure valid site.baseurl
     Object.keys(assets).forEach(category => {
@@ -176,13 +201,36 @@ permalink: /mariogame
      * c.) the home advances to 1st game level when button selection is made
     */
     // Start/Home screens
-    new GameLevel( {tag: "start", callback: startGameCallback } );
-    new GameLevel( {tag: "home", background: assets.backgrounds.start, callback: homeScreenCallback } );
+    new GameLevel( {tag: "start", 
+      callback: startGameCallback 
+      });
+    new GameLevel( {tag: "home", 
+      background: assets.backgrounds.start, 
+      callback: homeScreenCallback 
+    });
     // Game screens
-    new GameLevel( {tag: "hills", background: assets.backgrounds.hills, platform: assets.platforms.grass, platformO: assets.platformO.grass, player: assets.players.mario, tube: assets.obstacles.tube, callback: testerCallBack, thing: assets.thing.coin, } );
-    new GameLevel( {tag: "alien", background: assets.backgrounds.planet, platform: assets.platforms.alien, player: assets.players.monkey, callback: testerCallBack } );
+    new GameLevel( {tag: "hills", 
+      background: assets.backgrounds.hills,
+      background2: assets.backgrounds.mountains,
+      platform: assets.platforms.grass, 
+      platformO: assets.platformO.grass, 
+      player: assets.players.mario, 
+      enemy: assets.enemies.goomba, 
+      tube: assets.obstacles.tube, 
+      callback: testerCallBack, 
+      thing: assets.thing.coin,
+    });
+    new GameLevel( {tag: "alien", 
+      background: assets.backgrounds.planet, 
+      platform: assets.platforms.alien, 
+      player: assets.players.monkey, 
+      callback: testerCallBack 
+    });
     // Game Over screen
-    new GameLevel( {tag: "end", background: assets.backgrounds.end, callback: gameOverCallBack } );
+    new GameLevel( {tag: "end", 
+      background: assets.backgrounds.end, 
+      callback: gameOverCallBack 
+    });
 
     /*  ==========================================
      *  ========== Game Control ==================
