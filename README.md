@@ -1,3 +1,3 @@
 - Work from Trimester 2.
 - Includes old stuff from trimester 1.
-- Has Gavin's and Zafeer's added.
+- Has Gavin's and Zafeer's games added.
