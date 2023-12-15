@@ -104,7 +104,7 @@ permalink: /mariogame
       d: { row: 2, frames: 7, idleFrame: { column: 7, frames: 0 } }
     },
     monkey: {
-      src: "/images/platformer/sprites/monkey.png",
+      src: "/images/platformer/sprites/lopezanimation.png",
       width: 40,
       height: 40,
       w: { row: 9, frames: 15 },
