@@ -1,10 +1,9 @@
 import GameEnv from './GameEnv.js';
 import Character from './Character.js';
 import deathController from './Death.js';
-
-export class Lopez extends Character{
+export class Player extends Character{
     // constructors sets up Character object 
-    constructor(canvas, image, speedRatio, playerData, speedLimit){ // Add speedLimit
+    constructor(canvas, image, speedRatio, playerData, speedLimit){
         super(canvas, 
             image, 
             speedRatio,
@@ -108,8 +107,8 @@ export class Lopez extends Character{
 
     // Player updates
     update() {
-         // Adjust speed based on pressed keys
-         if (this.pressedKeys['a'] && this.movement.left) {
+        // Adjust speed based on pressed keys
+        if (this.pressedKeys['a'] && this.movement.left) {
             this.currentSpeed -= this.acceleration;
         } else if (this.pressedKeys['d'] && this.movement.right) {
             this.currentSpeed += this.acceleration;
@@ -122,13 +121,17 @@ export class Lopez extends Character{
         if (Math.abs(this.currentSpeed) > this.speedLimit) {
             this.currentSpeed = this.currentSpeed > 0 ? this.speedLimit : -this.speedLimit;
         }
+        // Apply speed limit
+        if (Math.abs(this.currentSpeed) > this.speedLimit) {
+            this.currentSpeed = this.currentSpeed > 0 ? this.speedLimit : -this.speedLimit;
+        }
 
         // Update player position based on speed
         this.x += this.currentSpeed;
 
         // Check for speed threshold to change sprite sheet rows
-        const walkingSpeedThreshold = 5; // Walking speed threshold
-        const runningSpeedThreshold = 10; // Running speed threshold
+        const walkingSpeedThreshold = 1; // Walking speed threshold
+        const runningSpeedThreshold = 5; // Running speed threshold
 
         if (Math.abs(this.currentSpeed) >= runningSpeedThreshold) {
             // Change sprite sheet row for running
@@ -305,4 +308,4 @@ handleKeyUp(event) {
 }
 
 
-export default Lopez;
+export default Player;
