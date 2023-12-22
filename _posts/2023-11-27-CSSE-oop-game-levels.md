@@ -164,7 +164,7 @@ permalink: /mariogame
           s: {}, // Stop the movement 
         }
   },
-
+ 
 };
 // Sort scores from lowest to highest
 function sortScoresLowToHigh() {
