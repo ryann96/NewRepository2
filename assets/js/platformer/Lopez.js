@@ -1,7 +1,7 @@
 import GameEnv from './GameEnv.js';
 import Character from './Character.js';
 import deathController from './Death.js';
-export class Player extends Character{
+export class Lopez extends Character{
     // constructors sets up Character object 
     constructor(canvas, image, speedRatio, playerData, speedLimit){
         super(canvas, 
@@ -117,10 +117,6 @@ export class Player extends Character{
             this.currentSpeed *= (1 - this.deceleration);
         }
 
-        // Apply speed limit
-        if (Math.abs(this.currentSpeed) > this.speedLimit) {
-            this.currentSpeed = this.currentSpeed > 0 ? this.speedLimit : -this.speedLimit;
-        }
         // Apply speed limit
         if (Math.abs(this.currentSpeed) > this.speedLimit) {
             this.currentSpeed = this.currentSpeed > 0 ? this.speedLimit : -this.speedLimit;
@@ -308,4 +304,4 @@ handleKeyUp(event) {
 }
 
 
-export default Player;
+export default Lopez;

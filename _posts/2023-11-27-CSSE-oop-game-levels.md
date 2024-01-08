@@ -131,6 +131,7 @@ permalink: /mariogame
   },
   players: {
     mario: {
+      type: 0,
       src: "/images/platformer/sprites/mario.png",
       width: 256,
       height: 256,
@@ -142,6 +143,7 @@ permalink: /mariogame
       d: { row: 2, frames: 7, idleFrame: { column: 7, frames: 0 } }
     },
     monkey: {
+      type: 0,
       src: "/images/platformer/sprites/monkey.png",
       width: 40,
       height: 40,
@@ -153,6 +155,7 @@ permalink: /mariogame
       d: { row: 0, frames: 15, idleFrame: { column: 7, frames: 0 } }
     },
     lopez: {
+          type: 1,
           src: "/images/platformer/sprites/lopezanimation.png", // Modify this to match your file path
           width: 46,
           height: 52.5,
