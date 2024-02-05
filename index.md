@@ -1,5 +1,5 @@
 ---
-layout: home
+layout: base
 search_exclude: true
 image: /images/mario_animation.png
 ---
@@ -182,3 +182,15 @@ image: /images/mario_animation.png
 
 ## OOP Mini Project for Trimester 2
 Group Members: Gavin Copley, Ryan Nguyen, Zafeer Ahmed
+
+
+
+<h1>Snake Game</h1>
+<p><a href="https://ryann96.github.io/NewRepository2//2023/08/31/Snake_Game.html">
+<img src="{{site.baseurl}}/images/SnakeGame.png" alt="Snake Game" width="340" height="340">
+</a></p>
+
+<h1>Trimester 1 Game</h1>
+<p><a href="https://ryann96.github.io/BoxGame//2023/11/02/Test_New_Game.html">
+<img src="{{site.baseurl}}/images/Background5.0.png" alt="Background With Road" width="338" height="190">
+</a></p>

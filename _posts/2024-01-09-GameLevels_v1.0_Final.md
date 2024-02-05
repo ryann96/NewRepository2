@@ -8,3 +8,5 @@ type: ccc
 courses: { csse: {week: 18} }
 ---
 
+// Don't delete
+// Is used for the table
