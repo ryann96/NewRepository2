@@ -196,7 +196,7 @@ Group Members: Gavin Copley, Ryan Nguyen, Zafeer Ahmed
 </a></p>
 
 <h1>Trimester 1 Game</h1>
-<p><a href="https://ryann96.github.io/BoxGame//2023/11/02/Test_New_Game.html">
+<p><a href="https://ryann96.github.io/NewRepository2/game">
 <img src="{{site.baseurl}}/images/Background5.0.png" alt="Background With Road" width="338" height="190">
 </a></p>
 
