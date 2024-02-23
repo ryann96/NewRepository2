@@ -6,7 +6,7 @@ permalink: /Reflection/
 
 <html>
 <body>
-    <h1>Experience at Night at the Museum</h1> 
+<h1>Experience at Night at the Museum</h1> 
 <img src="{{site.baseurl}}/images/NATM.jpeg" alt="My Group at Night at The Museum">
 <style>
   .multiline-paragraph {
