@@ -287,6 +287,25 @@ export class Player extends Character {
             this.movement.right = true;
         }
 
+        // House collision check
+        if (this.collisionData.touchPoints.other.id === "house") {
+            // Collision with the left side of the House
+            if (this.collisionData.touchPoints.other.left) {
+                this.x = this.collisionData.touchPoints.other.x;
+
+                //hide the player
+                this.canvas.style.display = 'none';
+                
+                // Pause for two seconds
+                setTimeout(() => {   // animation in tube for 1 seconds
+                    this.gravityEnabled = true;
+                    setTimeout(() => { // move to end of screen for end of game detection
+                        this.x = GameEnv.innerWidth + 1;
+                    }, 1000);
+                }, 1000);            
+            }
+        }
+
         // Goomba collision check
         // Checks if collision touchpoint id is either "goomba" or "flyingGoomba"
         if (this.collisionData.touchPoints.other.id === "goomba" || this.collisionData.touchPoints.other.id === "flyingGoomba") {

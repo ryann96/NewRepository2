@@ -17,6 +17,7 @@ import FlyingGoomba from './FlyingGoomba.js';
 import BlockPlatform from './BlockPlatform.js';
 import Mushroom from './Mushroom.js';
 import Coin from './Coin.js';
+import House from './House.js';
 
 
 /* Coding Style Notes
@@ -170,10 +171,12 @@ const GameSetup = {
       obstacles: {
         tube: { src: "/images/platformer/obstacles/tube.png" },
         coin: { src: "/images/platformer/obstacles/coin.png"},
-        tree: { src: "/images/platformer/obstacles/tree.png"}
+        tree: { src: "/images/platformer/obstacles/tree.png"},
+        house: { src: "/images/platformer/obstacles/house.png"},
       },
       platforms: {
         grass: { src: "/images/platformer/platforms/grass.png" },
+        road: { src: "/images/platformer/platforms/Road6.2.png" },  
         alien: { src: "/images/platformer/platforms/alien.png" },
         bricks: { src: "/images/platformer/platforms/brick_wall.png" },
         block: { src: "/images/platformer/platforms/brick_block.png" }, //MAY need 3 new variables: sizeRatio, widthRatio, and heightRatio
@@ -195,6 +198,7 @@ const GameSetup = {
         mountains: { src: "/images/platformer/backgrounds/mountains.jpg" },
         clouds : { src: "/images/platformer/backgrounds/clouds.png"},
         space: { src: "/images/platformer/backgrounds/planet.jpg" },
+        city: { src: "/images/platformer/backgrounds/whitehouse.jpeg" },
         castles: { src: "/images/platformer/backgrounds/castles.png" },
         loading: { src: "/images/platformer/backgrounds/greenscreen.png" },
         complete: { src: "/images/platformer/backgrounds/OneStar.png" },
@@ -243,7 +247,21 @@ const GameSetup = {
           d: { row: 2, frames: 3, idleFrame: { column: 1, frames: 0 } }, // Left Movement 
           runningLeft: { row: 5, frames: 3, idleFrame: {column: 1, frames: 0} },
           runningRight: { row: 4, frames: 3, idleFrame: {column: 1, frames: 0} },
-        }
+        },
+        donald: {
+          src: "/images/platformer/sprites/trump_run.png", 
+          width: 100,
+          height: 100,
+          scaleSize: 60,
+          speedRatio: 0.7,
+          w: { row: 2, frames: 6 },
+          wa: { row: 2, frames: 4 },
+          wd: { row: 3, frames: 4 },
+          idle: { row: 3, frames: 1, idleFrame: { column: 1, frames: 0 } },
+          a: { row: 3, frames: 4, idleFrame: { column: 1, frames: 0 } }, // Left Movement
+          s: { row: 1, frames: 4 }, // Stop the movement 
+          d: { row: 1, frames: 6, idleFrame: { column: 1, frames: 0 } }, // Right Movement
+        },
       },
       enemies: {
         goomba: {
@@ -265,6 +283,14 @@ const GameSetup = {
           src: "/images/platformer/platforms/mushroom.png",
           width: 200,
           height: 180,
+        },
+        lgbtgoomba: {
+          src: "/images/platformer/sprites/lgbtgoomba.png",
+          width: 448,
+          height: 452,
+          scaleSize: 60,
+          speedRatio: 0.7,
+          xPercentage: 0.6,
         },
       }
     },
@@ -416,6 +442,28 @@ const GameSetup = {
         ];
         // Space Game Level added to the GameEnv ...
         new GameLevel( {tag: "space", callback: this.playerOffScreenCallBack, objects: spaceGameObjects} );
+
+        // Space2 Game Level definition...
+        const cityGameObjects = [
+          // GameObject(s), the order is important to z-index...
+          { name: 'city', id: 'background', class: Background, data: this.assets.backgrounds.city },
+          { name: 'road', id: 'platform', class: Platform, data: this.assets.platforms.road },
+          { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: this.assets.platforms.block, xPercentage: 0.2, yPercentage: 0.85 },
+          { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: this.assets.platforms.block, xPercentage: 0.2368, yPercentage: 0.85 },
+          { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: this.assets.platforms.block, xPercentage: 0.5, yPercentage: 0.85 },
+          { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: this.assets.platforms.block, xPercentage: 0.5368, yPercentage: 0.85 },
+          { name: 'lgbtgoomba', id: 'lgbtgoomba', class: Goomba, data: this.assets.enemies.lgbtgoomba, xPercentage: 0.3, minPosition: 0.05},
+          { name: 'goomba', id: 'goomba', class: Goomba, data: this.assets.enemies.goomba, xPercentage:  0.5, minPosition: 0.3 },
+          { name: 'goombaSpecial', id: 'goomba', class: Goomba, data: this.assets.enemies.goomba, xPercentage:  0.75, minPosition: 0.5 }, //this special name is used for random event 2 to make sure that only one of the Goombas ends the random event
+          { name: 'flyingGoomba', id: 'flyingGoomba', class: FlyingGoomba, data: this.assets.enemies.flyingGoomba, xPercentage:  0.5, minPosition:  0.05},
+          { name: 'flyingGoomba', id: 'flyingGoomba', class: FlyingGoomba, data: this.assets.enemies.flyingGoomba, xPercentage:  0.9, minPosition: 0.5},
+          { name: 'donald', id: 'player', class: Player, data: this.assets.players.donald },
+          { name: 'house', id: 'house', class: House, data: this.assets.obstacles.house },
+          { name: 'complete2', id: 'background', class: BackgroundTransitions,  data: this.assets.backgrounds.complete2 },
+        ];
+        // Space Game Level added to the GameEnv ...
+        new GameLevel( {tag: "city", callback: this.playerOffScreenCallBack, objects: cityGameObjects} );
+
 
         // Game Over Level definition...
         const endGameObjects = [
