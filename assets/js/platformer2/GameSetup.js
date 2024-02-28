@@ -285,8 +285,8 @@ const GameSetup = {
           width: 200,
           height: 180,
         },
-        lgbtgoomba: {
-          src: "/images/platformer/sprites/lgbtgoomba.png",
+        rainbowgoomba: {
+          src: "/images/platformer/sprites/rainbowgoomba.png",
           width: 448,
           height: 452,
           scaleSize: 60,
@@ -453,7 +453,7 @@ const GameSetup = {
           { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: this.assets.platforms.block, xPercentage: 0.2368, yPercentage: 0.85 },
           { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: this.assets.platforms.block, xPercentage: 0.5, yPercentage: 0.85 },
           { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: this.assets.platforms.block, xPercentage: 0.5368, yPercentage: 0.85 },
-          { name: 'lgbtgoomba', id: 'lgbtgoomba', class: Goomba, data: this.assets.enemies.lgbtgoomba, xPercentage: 0.3, minPosition: 0.05},
+          { name: 'rainbowgoomba', id: 'rainbowgoomba', class: Goomba, data: this.assets.enemies.rainbowgoomba, xPercentage: 0.3, minPosition: 0.05},
           { name: 'goomba', id: 'goomba', class: Goomba, data: this.assets.enemies.goomba, xPercentage:  0.5, minPosition: 0.3 },
           { name: 'goombaSpecial', id: 'goomba', class: Goomba, data: this.assets.enemies.goomba, xPercentage:  0.75, minPosition: 0.5 }, //this special name is used for random event 2 to make sure that only one of the Goombas ends the random event
           { name: 'flyingGoomba', id: 'flyingGoomba', class: FlyingGoomba, data: this.assets.enemies.flyingGoomba, xPercentage:  0.5, minPosition:  0.05},
