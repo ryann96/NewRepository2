@@ -198,11 +198,12 @@ const GameSetup = {
         mountains: { src: "/images/platformer/backgrounds/mountains.jpg" },
         clouds : { src: "/images/platformer/backgrounds/clouds.png"},
         space: { src: "/images/platformer/backgrounds/planet.jpg" },
-        city: { src: "/images/platformer/backgrounds/whitehouse.jpeg" },
+        whitehouse: { src: "/images/platformer/backgrounds/whitehouse.jpeg" },
         castles: { src: "/images/platformer/backgrounds/castles.png" },
         loading: { src: "/images/platformer/backgrounds/greenscreen.png" },
         complete: { src: "/images/platformer/backgrounds/OneStar.png" },
         complete2: { src: "/images/platformer/backgrounds/TwoStar.png" },
+        complete3: { src: "/images/platformer/backgrounds/Trump.png" },
         end: { src: "/images/platformer/backgrounds/Congratulations!!!.png" }
       },
       players: {
@@ -438,15 +439,15 @@ const GameSetup = {
           { name: 'flyingGoomba', id: 'flyingGoomba', class: FlyingGoomba, data: this.assets.enemies.flyingGoomba, xPercentage:  0.9, minPosition: 0.5},
           { name: 'monkey', id: 'player', class: Player, data: this.assets.players.monkey },
           { name: 'tree', id: 'tree', class: Tree, data: this.assets.obstacles.tree },
-          { name: 'complete', id: 'background', class: BackgroundTransitions,  data: this.assets.backgrounds.complete },
+          { name: 'complete2', id: 'background', class: BackgroundTransitions,  data: this.assets.backgrounds.complete2 },
         ];
         // Space Game Level added to the GameEnv ...
         new GameLevel( {tag: "space", callback: this.playerOffScreenCallBack, objects: spaceGameObjects} );
 
         // Space2 Game Level definition...
-        const cityGameObjects = [
+        const whitehouseGameObjects = [
           // GameObject(s), the order is important to z-index...
-          { name: 'city', id: 'background', class: Background, data: this.assets.backgrounds.city },
+          { name: 'whitehouse', id: 'background', class: Background, data: this.assets.backgrounds.whitehouse },
           { name: 'road', id: 'platform', class: Platform, data: this.assets.platforms.road },
           { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: this.assets.platforms.block, xPercentage: 0.2, yPercentage: 0.85 },
           { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: this.assets.platforms.block, xPercentage: 0.2368, yPercentage: 0.85 },
@@ -459,10 +460,10 @@ const GameSetup = {
           { name: 'flyingGoomba', id: 'flyingGoomba', class: FlyingGoomba, data: this.assets.enemies.flyingGoomba, xPercentage:  0.9, minPosition: 0.5},
           { name: 'donald', id: 'player', class: Player, data: this.assets.players.donald },
           { name: 'house', id: 'house', class: House, data: this.assets.obstacles.house },
-          { name: 'complete2', id: 'background', class: BackgroundTransitions,  data: this.assets.backgrounds.complete2 },
+          { name: 'complete3', id: 'background', class: BackgroundTransitions,  data: this.assets.backgrounds.complete3 },
         ];
-        // Space Game Level added to the GameEnv ...
-        new GameLevel( {tag: "city", callback: this.playerOffScreenCallBack, objects: cityGameObjects} );
+        // White House Level added to the GameEnv ...
+        new GameLevel( {tag: "White House", callback: this.playerOffScreenCallBack, objects: whitehouseGameObjects} );
 
 
         // Game Over Level definition...
